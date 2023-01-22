@@ -23,7 +23,7 @@ if (!isset($_SESSION['ID'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Multi user role based application login in php mysqli</title>
+        <title>Home</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
        <body>
@@ -31,76 +31,30 @@ if (!isset($_SESSION['ID'])) {
 		<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="" style="color: #5b5757;"><img src="images/logo.webp" class="logo"></a>
 	            <ul class="navbar-nav px-3">
 			<li class="nav-item text-nowrap">
-		    	    <a class="nav-link" href="logout.php">Hi, <?php echo ucwords($_SESSION['NAME']); ?></a><input type="submit" name="submit" class="btn btn-success" value="Log Out">
+		    	    <a class="nav-link" href="logout.php">Hi, <?php echo ucwords($_SESSION['FNAME']); ?> <input type="submit" name="submit" class="btn btn-success" value="Log Out"></a>
 			</li>
 		    </ul>
 		</nav>		
 		<div class="container-fluid">
 		    <div class="row">
-			<nav class="col-md-2 d-none d-md-block bg-info sidebar" style="height: 569px">
+			<nav class="col-md-2 d-none d-md-block bg-info sidebar" style="height: 1000px">
 		    	    <div class="sidebar-sticky">
 			        <ul class="nav flex-column" style="color: #5b5757;">
 				    <li class="nav-item">
 					<a class="nav-link active" href="">
 					<span data-feather="home"></span>
 				            Dashboard <span class="sr-only">(current)</span>
-					</a>
+							</a>
 				    </li>
-				<?php if($_SESSION['ROLE'] == 'super_admin'){ ?>
-				<h6>Sale & Purchase</h6>	
-				    <li class="nav-item">
-					<a class="nav-link" href="">
-				    	    <span data-feather="users"></span>
-					    Payment
-					</a>
-				    </li>	
-				    <li class="nav-item">
-				        <a class="nav-link" href="">
-					    <span data-feather="users"></span>
-					    Sales
-					</a>
-				    </li>
-				    <li class="nav-item">
-					<a class="nav-link" href="">
-				    	    <span data-feather="users"></span>
-					    Purchases
-					</a>
-				    </li>
-				<?php } ?>
-				<?php if ($_SESSION['ROLE'] == 'admin' || $_SESSION['ROLE'] == 'super_admin' || $_SESSION['ROLE'] == 'manager') { ?>
-				<h6>Catalog</h6>		
+
+				<?php if ($_SESSION['ROLE'] == 'Admin' || $_SESSION['ROLE'] == 'Super Admin' || $_SESSION['ROLE'] == 'Regular Admin') { ?>
+				<h6>ADMINISTRATOR</h6>		
 				    <li class="nav-item">
 					<a class="nav-link" href="">
 					    <span data-feather="users"></span>
-					    Products
+					    Admin Profile
 					</a>
 				    </li>
-				    <li class="nav-item">
-					<a class="nav-link" href="">
-				    	    <span data-feather="users"></span>
-					    Category
-					</a>
-				    </li>	
-				    <h6>Order & Shipping</h6>
-					<li class="nav-item">
-				    	    <a class="nav-link" href="">
-					        <span data-feather="users"></span>
-						Shipping
-					    </a>
-					</li>
-					
-					<li class="nav-item">
-					    <a class="nav-link" href="">
-					        <span data-feather="users"></span>
-						Customers
-					    </a>
-					</li>
-					<li class="nav-item">
-					    <a class="nav-link" href="">
-						<span data-feather="users"></span>
-						Order
-					    </a>
-					</li>
 				<?php } ?>						
 			    </ul>
 			</div>
@@ -113,37 +67,38 @@ if (!isset($_SESSION['ID'])) {
 		  <table class="table table-striped">
 		    <thead>
 		       <tr>
-			   <th>Id</th>
-			   <th>Name</th>
+			   <th>Admin ID</th>
+			   <th>First Name</th>
+			   <th>Last Name</th>
 			   <th>Username</th>
 			   <th>Role</th>
-			   <th>Created</th>
 			   <th>Status</th>
 			   <th>Action</th>
 			</tr>
 		    </thead>
 		    <tbody>
 			<?php
-		    	    if ($_SESSION['ROLE'] == "super_admin") {
-				$query = "SELECT * FROM admins";
+		    	    if ($_SESSION['ROLE'] == "Super Admin") {
+				$query = "SELECT * FROM admin_account_user";
 			    }else{
 				$role = $_SESSION['ROLE'];
-				$query = "SELECT * FROM admins WHERE role = '$role'";
+				$query = "SELECT * FROM admin_account_user WHERE role = '$role'";
 			    }
-			        $result = $con->query($query);
-				if ($result->num_rows > 0) {
-			    	   while ($row = $result->fetch_array()) {
+					$result = mysqli_query($con, $query);
+				if (mysqli_num_rows($result) > 0) {
+			    	   while ($row = mysqli_fetch_array($result)) {
 			    ?>		
 			    <tr>
-				<td><?php echo $row['id_number']?></td>
-				<td><?php echo $row['name']?></td>
+				<td><?php echo $row['admin_userid']?></td>
+				<td><?php echo $row['firstname']?></td>
+				<td><?php echo $row['lastname']?></td>
 				<td><?php echo $row['username']?></td>
 				<td><?php echo $row['role']?></td>
-			        <td><?php echo date('d-M-Y', strtotime($row['created']))?></td>
 					<td><?php echo $row['status']?></td>
-					<td><a href="update.php?id=<?= $row['id_number']; ?>" class="btn btn-success btn-sm">Edit</a></td>
-					<td><form action="delete.php" method="POST" class="d-inline">
-                        <button type="submit" name="delete" value="<?=$row['id_number'];?>" class="btn btn-danger btn-sm">Delete</button>
+					<td>
+						<a href="update.php?id=<?=$row['admin_userid'];?>" class="btn btn-success btn-sm">Edit</a>
+						<form action="delete.php" method="POST" class="d-inline">
+                        <button type="submit" name="delete" value="<?=$row['admin_userid'];?>" class="btn btn-danger btn-sm">Delete</button>
                         </form>
 					</td>
 			    </tr>

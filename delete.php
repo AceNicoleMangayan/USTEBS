@@ -7,7 +7,7 @@ if(isset($_POST['delete'])) {
 
     $id = mysqli_real_escape_string($con, $_POST['delete']);
 
-    $query = "UPDATE admins SET status = 'Disable' WHERE id_number='$id' ";
+    $query = "UPDATE admin_account_user SET status = 'Disable' WHERE admin_userid='$id' ";
     $result = mysqli_query($con, $query);
 
     if($result) {

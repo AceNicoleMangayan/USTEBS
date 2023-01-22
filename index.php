@@ -11,25 +11,25 @@
   if (isset($_POST['submit'])) {
     $errorMsg = "";
 			
-    $id = mysqli_real_escape_string($con, $_POST['id_number']);
+    $id = mysqli_real_escape_string($con, $_POST['admin_userid']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
     
   if (!empty($id) || !empty($password)) {
-        $query  = "SELECT * FROM admins WHERE id_number = '$id' AND password = '$password'";
+        $query  = "SELECT * FROM admin_account_user WHERE admin_userid = '$id' AND password = '$password'";
         $result = mysqli_query($con, $query);
 
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
-            $_SESSION['ID'] = $row['id_number'];
+            $_SESSION['ID'] = $row['admin_userid'];
             $_SESSION['ROLE'] = $row['role'];
-            $_SESSION['NAME'] = $row['name'];
+            $_SESSION['FNAME'] = $row['firstname'];
             header("Location:dashboard.php");
             die();                              
         }else{
-          $errorMsg = "No user found on this username";
+          $errorMsg = "No user found on this ID Number!";
         } 
     }else{
-      $errorMsg = "Username and Password is required";
+      $errorMsg = "ID Number and Password is required!";
     }
 }
 
@@ -77,8 +77,8 @@
         <?php } ?>
         <form action="" method="POST">
           <div class="form-group">  
-            <label for="id_number" style="color:#fff;"><b>ID Number:</label> 
-            <input type="text" class="form-control" name="id_number" placeholder="Enter ID Number" >
+            <label for="admin_userid" style="color:#fff;"><b> Admin ID Number:</label> 
+            <input type="text" class="form-control" name="admin_userid" placeholder="Enter Admin ID Number" >
           </div>
           <div class="form-group">  
             <label for="password" style="color:#fff;"><b>Password:</label> 

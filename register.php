@@ -3,11 +3,13 @@
   include_once('database.php');
   if (isset($_POST['submit'])) {
     
+    $id = mysqli_real_escape_string($con, $_POST['admin_userid']);
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
-    $name     = mysqli_real_escape_string($con, $_POST['name']);
+    $fname     = mysqli_real_escape_string($con, $_POST['firstname']);
+    $lname     = mysqli_real_escape_string($con, $_POST['lastname']);
     $role     = mysqli_real_escape_string($con, $_POST['role']);
-    $query  = "INSERT INTO admins (name,username,password,role) VALUES ('$name','$username','$password','$role')";
+    $query  = "INSERT INTO admin_account_user (admin_userid,firstname,lastname,username,password,role) VALUES ('$id','$fname','$lname','$username','$password','$role')";
     $result = mysqli_query($con, $query);
     if ($result==true) {
       header("Location:index.php");
@@ -22,14 +24,14 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 35%;
-    padding: 30px;
+    width: 30%;
+    padding: 0px;
 
   }
 
   .ustebs{
     width: 100%;
-    height: 100%;
+    height: 110%;
     background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(images/ustp.jpg);
 	  background-size: cover;
 	  background-position: center;
@@ -39,7 +41,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Multi user role based application login in php mysqli</title>
+  <title>Registration</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -61,8 +63,16 @@
         <?php } ?>
         <form action="" method="POST">
           <div class="form-group">
-            <label for="name" style="color:#fff;"><b>Name:</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter Name" required="">
+            <label for="admin_userid" style="color:#fff;"><b>Admin ID Number:</label>
+            <input type="text" class="form-control" name="admin_userid" placeholder="Enter ID Number" required="">
+          </div>
+          <div class="form-group">
+            <label for="firstname" style="color:#fff;"><b>First Name:</label>
+            <input type="text" class="form-control" name="firstname" placeholder="Enter First Name" required="">
+          </div>
+          <div class="form-group">
+            <label for="lastname" style="color:#fff;"><b>Last Name:</label>
+            <input type="text" class="form-control" name="lastname" placeholder="Enter Last Name" required="">
           </div>
           <div class="form-group">  
             <label for="username" style="color:#fff;"><b>Username:</label>
@@ -75,10 +85,10 @@
           <div class="form-group">  
             <label for="role" style="color:#fff;">Role:</label>
             <select class="form-control" name="role" required="">
-              <option value="">Select Role</option>
-              <option value="super_admin">Super admin</option>
-              <option value="admin">Admin</option>
-              <option value="manager">Manager</option>
+              <option value="">---Select Role---</option>
+              <option value="Super Admin">Super Admin</option>
+              <option value="Regular Admin">Regular Admin</option>
+              <option value="Admin">Admin</option>
             </select>
           </div>
           <div class="form-group">
