@@ -5,15 +5,14 @@ require 'database.php';
 if(isset($_POST['delete'])) {
     $errorMsg = "";
 
-    $id = mysqli_real_escape_string($con, $_POST['delete']);
+    $id_numb = mysqli_real_escape_string($con, $_POST['delete']);
 
-    $query = "UPDATE admin_account_user SET status = 'Disable' WHERE admin_userid='$id' ";
+    $query = "UPDATE student_users SET status = 'Disable' WHERE id_number='$id_numb' ";
     $result = mysqli_query($con, $query);
 
     if($result) {
-        header("Location:dashboard.php");
+        header("Location:user-dashboard.php");
         die();
-        $errorMsg = "User deleted";
     }
     else {
         $errorMsg = "User not deleted";
