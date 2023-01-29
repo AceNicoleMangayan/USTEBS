@@ -4,7 +4,10 @@ session_start();
 include_once('database.php');
 
     if (isset($_POST['submit'])) {
+<<<<<<< HEAD
       $errorMsg = "";
+=======
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
     
         $id = mysqli_real_escape_string($con, $_POST['admin_userid']);
         $username = mysqli_real_escape_string($con, $_POST['username']);
@@ -18,8 +21,12 @@ include_once('database.php');
           header("Location:admin-dashboard.php");
           die();
         }else{
+<<<<<<< HEAD
           $query1 = "SELECT * FROM admin_account_user WHERE admin_userid = '$id'";
           $errorMsg  = "ID Number already taken!... Please Try again!";
+=======
+          $errorMsg  = "You are not Registred..Please Try again";
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
         }   
       }
 
@@ -64,18 +71,27 @@ include_once('database.php');
 							</a>
 				    </li>
 
+<<<<<<< HEAD
                     <!-- <h6>ADMINISTRATOR</h6>		 -->
+=======
+                    <h6>ADMINISTRATOR</h6>		
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 				    <li class="nav-item">
 					<a class="nav-link" href="">
 					    <span data-feather="users"></span>
 					    Admin Profile
 					</a>
 				    </li>
+<<<<<<< HEAD
             <!-- <li class="nav-item">
+=======
+            <li class="nav-item">
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<a class="nav-link" href="admin-approved.php?id=<?php echo ucwords($_SESSION['ID']); ?>">
 				    	    <span data-feather="users"></span>
 					    Admin Approval
 						</a>
+<<<<<<< HEAD
 				    </li> -->
             <li class="nav-item">
 					<a class="nav-link" href="admin-analysis.php">
@@ -86,6 +102,13 @@ include_once('database.php');
             <a class="nav-link" href="user-report.php">
 				    	    <span data-feather="users"></span>
 					    User Reports
+=======
+				    </li>
+            <li class="nav-item">
+					<a class="nav-link" href="admin-analysis.php">
+				    	    <span data-feather="users"></span>
+					    Admin Analysis
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 						</a>
 				    </li>
 
@@ -110,6 +133,7 @@ include_once('database.php');
                         </h4>
                     </div>
 		<div class="table-responsive">
+<<<<<<< HEAD
 		  <table class="table table-striped">  <?php if (isset($errorMsg)) { ?>
           <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -118,6 +142,10 @@ include_once('database.php');
         <?php } ?>
 
         <?php if ($_SESSION['ROLE'] == "Super Admin") {?>
+=======
+		  <table class="table table-striped">
+          <?php if ($_SESSION['ROLE'] == "Super Admin") {?>
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 
         <form action="" method="POST">
           <div class="form-group">

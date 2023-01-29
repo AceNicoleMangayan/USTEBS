@@ -5,7 +5,10 @@ session_start();
   include_once('database.php');
 
   if (isset($_POST['update'])) {
+<<<<<<< HEAD
     $errorMsg = "";
+=======
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 
     $id = mysqli_real_escape_string($con, $_POST['admin_userid']);
     $username = mysqli_real_escape_string($con, $_POST['username']);
@@ -19,7 +22,11 @@ session_start();
       header("Location:admin-dashboard.php");
       die();
     }else{
+<<<<<<< HEAD
       $errorMsg  = "Admin Not Updated..Please Try again";
+=======
+      $errorMsg  = "You are not Registred..Please Try again";
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
     }   
   }
 
@@ -65,18 +72,27 @@ session_start();
 							</a>
 				    </li>
 
+<<<<<<< HEAD
                     <!-- <h6>ADMINISTRATOR</h6>		 -->
+=======
+                    <h6>ADMINISTRATOR</h6>		
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 				    <li class="nav-item">
 					<a class="nav-link" href="">
 					    <span data-feather="users"></span>
 					    Admin Profile
 					</a>
 				    </li>
+<<<<<<< HEAD
             <!-- <li class="nav-item">
+=======
+            <li class="nav-item">
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<a class="nav-link" href="admin-approved.php?id=<?php echo ucwords($_SESSION['ID']); ?>">
 				    	    <span data-feather="users"></span>
 					    Admin Approval
 						</a>
+<<<<<<< HEAD
 				    </li> -->
             <li class="nav-item">
 					<a class="nav-link" href="admin-analysis.php">
@@ -87,6 +103,13 @@ session_start();
             <a class="nav-link" href="user-report.php">
 				    	    <span data-feather="users"></span>
 					    User Reports
+=======
+				    </li>
+            <li class="nav-item">
+					<a class="nav-link" href="admin-analysis.php">
+				    	    <span data-feather="users"></span>
+					    Admin Analysis
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 						</a>
 				    </li>
 

@@ -52,18 +52,27 @@ session_start();
 							</a>
 				    </li>
 
+<<<<<<< HEAD
                     <!-- <h6>ADMINISTRATOR</h6>		 -->
+=======
+                    <h6>ADMINISTRATOR</h6>		
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 				    <li class="nav-item">
 					<a class="nav-link" href="admin-profile.php?id=<?php echo ucwords($_SESSION['ID']); ?>">
 					    <span data-feather="users"></span>
 					    Admin Profile
 					</a>
 				    </li>
+<<<<<<< HEAD
 					<!-- <li class="nav-item">
+=======
+					<li class="nav-item">
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<a class="nav-link" href="admin-approved.php?id=<?php echo ucwords($_SESSION['ID']); ?>">
 				    	    <span data-feather="users"></span>
 					    Admin Approval
 						</a>
+<<<<<<< HEAD
 				    </li> -->
 					<li class="nav-item">
 					<a class="nav-link" href="admin-analysis.php">
@@ -74,6 +83,13 @@ session_start();
 					<a class="nav-link" href="user-report.php">
 				    	    <span data-feather="users"></span>
 					    User Reports
+=======
+				    </li>
+					<li class="nav-item">
+					<a class="nav-link" href="admin-analysis.php">
+				    	    <span data-feather="users"></span>
+					    Admin Analysis
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 						</a>
 				    </li>
 
@@ -114,8 +130,12 @@ session_start();
         <form action="" action="">
           <div class="form-group">
 		  	<label for="firstname" style="color:#000000;"><b>Admin ID Number:</label>
+<<<<<<< HEAD
             <input type="text" class="form-control" name="admin_userid" value="<?=$row['admin_userid'];?>">
 		  </div>
+=======
+            <input type="hidden" class="form-control" name="admin_userid" value="<?=$row['admin_userid'];?>">
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
           <div class="form-group">
             <label for="firstname" style="color:#000000;"><b>First Name:</label>
             <input type="text" class="form-control" name="firstname" value="<?=$row['firstname'];?>">

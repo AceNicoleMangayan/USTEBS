@@ -48,7 +48,11 @@ if (!isset($_SESSION['ID'])) {
 							</a>
 				    </li>
 					
+<<<<<<< HEAD
 					<!-- <h6>ADMINISTRATOR</h6>	 -->
+=======
+					<h6>ADMINISTRATOR</h6>	
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<?php if ($_SESSION['ROLE'] == 'Super Admin' || $_SESSION['ROLE'] == 'Regular Admin') { ?>			
 				    <li class="nav-item">
 					<a class="nav-link" href="admin-profile.php?id=<?php echo ucwords($_SESSION['ID']); ?>" >
@@ -56,11 +60,16 @@ if (!isset($_SESSION['ID'])) {
 					    Admin Profile
 					</a>
 				    </li>
+<<<<<<< HEAD
 					<!-- <li class="nav-item">
+=======
+					<li class="nav-item">
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<a class="nav-link" href="admin-approved.php?id=<?php echo ucwords($_SESSION['ID']); ?>">
 				    	    <span data-feather="users"></span>
 					    Admin Approval
 						</a>
+<<<<<<< HEAD
 				    </li> -->
 					<a class="nav-link" href="admin-analysis.php">
 				    	    <span data-feather="users"></span>
@@ -71,12 +80,21 @@ if (!isset($_SESSION['ID'])) {
 					<a class="nav-link" href="user-report.php">
 				    	    <span data-feather="users"></span>
 					    User Reports
+=======
+				    </li>
+					<a class="nav-link" href="admin-analysis.php">
+				    	    <span data-feather="users"></span>
+					    Admin Analysis
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 						</a>
 				    </li>
 					<?php } ?>	
 
+<<<<<<< HEAD
 					
 
+=======
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 				<?php if ($_SESSION['ROLE'] == 'Super Admin') { ?>
 					<li class="nav-item">
 					<a class="nav-link" href="admin-dashboard.php">
@@ -136,6 +154,7 @@ if (!isset($_SESSION['ID'])) {
                 <td><?php echo $row['gender']?></td>
 				<td><?php echo $row['status']?></td>
 					<td>
+<<<<<<< HEAD
 						<a href="user-update.php?id=<?=$row['id_number'];?>" class="btn btn-info btn-sm" style="width:63%;">Edit</a>
 						<form action="user-disable.php" method="POST" class="d-inline">
 						<input type="hidden" name="users_ID" value="<?=$row['id_number'];?>">
@@ -144,6 +163,11 @@ if (!isset($_SESSION['ID'])) {
 							<?php }else{?>
 								<button type="submit" name="status" value="Active" class="btn btn-success btn-sm">Active</button>
                         <?php }?>
+=======
+						<a href="user-update.php?id=<?=$row['id_number'];?>" class="btn btn-success btn-sm" style="width:63%;">Edit</a>
+						<form action="user-disable.php" method="POST" class="d-inline">
+                        <button type="submit" name="delete" value="<?=$row['id_number'];?>" class="btn btn-danger btn-sm">Disable</button>
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
                         </form>
 					</td>
 			    </tr>

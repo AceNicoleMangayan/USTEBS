@@ -47,7 +47,11 @@ include_once('database.php');
 							</a>
 				    </li>
 
+<<<<<<< HEAD
 					<!-- <h6>ADMINISTRATOR</h6> -->
+=======
+					<h6>ADMINISTRATOR</h6>
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<?php if ($_SESSION['ROLE'] == 'Super Admin' || $_SESSION['ROLE'] == 'Regular Admin') { ?>		
 				    <li class="nav-item">
 					<a href="admin-profile.php?id=<?php echo ucwords($_SESSION['ID']); ?>" class="nav-link" >
@@ -55,11 +59,16 @@ include_once('database.php');
 					    Admin Profile
 					</a>
 				    </li>
+<<<<<<< HEAD
 					<!-- <li class="nav-item">
+=======
+					<li class="nav-item">
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<a class="nav-link" href="admin-approved.php?id=<?php echo ucwords($_SESSION['ID']); ?>">
 				    	    <span data-feather="users"></span>
 					    Admin Approval
 						</a>
+<<<<<<< HEAD
 				    </li> -->
                     <li class="nav-item">
 					<a class="nav-link" href="admin-analysis.php">
@@ -72,6 +81,15 @@ include_once('database.php');
 					    User Reports
 						</a>
 				    </li>
+=======
+				    </li>
+                    <li class="nav-item">
+					<a class="nav-link" href="admin-analysis.php">
+				    	    <span data-feather="users"></span>
+					    Admin Analysis
+                        </a>
+				    </li>
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<?php } ?>	
 
 				<?php if ($_SESSION['ROLE'] == 'Super Admin') { ?>
@@ -92,10 +110,17 @@ include_once('database.php');
 
 		</div>
 		<div class="card-header">
+<<<<<<< HEAD
                         <h4>USER ANALYSIS</h4>
                     </div>
 
            <div id="piechart" style="width: 110%; height: 600px;"></div>  
+=======
+                        <h4>ADMIN ANALYSIS</h4>
+                    </div>
+
+            <div id="piechart" style="width: 110%; height: 600px;"></div>  
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
            <script type="text/javascript">  
            google.charts.load('current', {'packages':['corechart']});  
@@ -114,7 +139,11 @@ include_once('database.php');
                 var options = {  
                       title: 'PERCENTAGE OF MALE AND FEMALE USERS OF USTEBs BARTERING SYSTEM',  
                       is3D:true,  
+<<<<<<< HEAD
                       //pieHole: 0.4  
+=======
+                      pieHole: 0.4  
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
                      };  
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));  
                 chart.draw(data, options);  

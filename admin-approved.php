@@ -72,7 +72,11 @@ if(isset($_POST['delete'])) {
 							</a>
 				    </li>
 
+<<<<<<< HEAD
 					<!-- <h6>ADMINISTRATOR</h6> -->
+=======
+					<h6>ADMINISTRATOR</h6>
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<?php if ($_SESSION['ROLE'] == 'Super Admin' || $_SESSION['ROLE'] == 'Regular Admin') { ?>		
 				    <li class="nav-item">
 					<a href="admin-profile.php?id=<?php echo ucwords($_SESSION['ID']); ?>" class="nav-link" >
@@ -80,12 +84,20 @@ if(isset($_POST['delete'])) {
 					    Admin Profile
 					</a>
 				    </li>
+<<<<<<< HEAD
                     <!-- <li class="nav-item">
+=======
+                    <li class="nav-item">
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
 					<a class="nav-link" href="">
 				    	    <span data-feather="users"></span>
 					    Admin Approval
 						</a>
+<<<<<<< HEAD
 				    </li> -->
+=======
+				    </li>
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5
                     <li class="nav-item">
 					<a class="nav-link" href="admin-analysis.php">
 				    	    <span data-feather="users"></span>

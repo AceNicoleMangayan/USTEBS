@@ -47,7 +47,11 @@ if (!isset($_SESSION['ID'])) {
 							</a>
 				    </li>
 
+<<<<<<< HEAD:admin-dashboard.php
 					<!-- <h6>ADMINISTRATOR</h6> -->
+=======
+					<h6>ADMINISTRATOR</h6>
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5:dashboard.php
 					<?php if ($_SESSION['ROLE'] == 'Super Admin' || $_SESSION['ROLE'] == 'Regular Admin') { ?>		
 				    <li class="nav-item">
 					<a href="admin-profile.php?id=<?php echo ucwords($_SESSION['ID']); ?>" class="nav-link" >
@@ -55,11 +59,16 @@ if (!isset($_SESSION['ID'])) {
 					    Admin Profile
 					</a>
 				    </li>
+<<<<<<< HEAD:admin-dashboard.php
 					<!-- <li class="nav-item">
+=======
+					<li class="nav-item">
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5:dashboard.php
 					<a class="nav-link" href="admin-approved.php?id=<?php echo ucwords($_SESSION['ID']); ?>">
 				    	    <span data-feather="users"></span>
 					    Admin Approval
 						</a>
+<<<<<<< HEAD:admin-dashboard.php
 				    </li> -->
 					<li class="nav-item">
 					<a class="nav-link" href="admin-analysis.php">
@@ -70,6 +79,13 @@ if (!isset($_SESSION['ID'])) {
 					<a class="nav-link" href="user-report.php">
 				    	    <span data-feather="users"></span>
 					    User Reports
+=======
+				    </li>
+					<li class="nav-item">
+					<a class="nav-link" href="admin-analysis.php">
+				    	    <span data-feather="users"></span>
+					    Admin Analysis
+>>>>>>> 7218bcb6743f066db53cc2c9030e1312927a00a5:dashboard.php
 						</a>
 				    </li>
 					<?php } ?>	
