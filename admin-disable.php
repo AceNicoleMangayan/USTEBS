@@ -11,7 +11,7 @@ if(isset($_POST['delete'])) {
     $result = mysqli_query($con, $query);
 
     if($result) {
-        header("Location:dashboard.php");
+        header("Location:admin-dashboard.php");
         die();
         $errorMsg = "User deleted";
     }

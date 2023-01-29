@@ -23,7 +23,7 @@ if (!isset($_SESSION['ID'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
+        <title>Admin</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
        <body>
@@ -37,23 +37,51 @@ if (!isset($_SESSION['ID'])) {
 		</nav>		
 		<div class="container-fluid">
 		    <div class="row">
-			<nav class="col-md-2 d-none d-md-block bg-info sidebar" style="height: 1000px">
+			<nav class="col-md-2 d-none d-md-block bg-info sidebar" style="height: auto;">
 		    	    <div class="sidebar-sticky">
 			        <ul class="nav flex-column" style="color: #5b5757;">
 				    <li class="nav-item">
-					<a class="nav-link active" href="">
+					<a class="nav-link active" href="user-dashboard.php">
 					<span data-feather="home"></span>
 				            Dashboard <span class="sr-only">(current)</span>
 							</a>
 				    </li>
 
-				<?php if ($_SESSION['ROLE'] == 'Admin' || $_SESSION['ROLE'] == 'Super Admin' || $_SESSION['ROLE'] == 'Regular Admin') { ?>
-				<h6>ADMINISTRATOR</h6>		
+					<!-- <h6>ADMINISTRATOR</h6> -->
+					<?php if ($_SESSION['ROLE'] == 'Super Admin' || $_SESSION['ROLE'] == 'Regular Admin') { ?>		
 				    <li class="nav-item">
-					<a class="nav-link" href="">
+					<a href="admin-profile.php?id=<?php echo ucwords($_SESSION['ID']); ?>" class="nav-link" >
 					    <span data-feather="users"></span>
 					    Admin Profile
 					</a>
+				    </li>
+					<!-- <li class="nav-item">
+					<a class="nav-link" href="admin-approved.php?id=<?php echo ucwords($_SESSION['ID']); ?>">
+				    	    <span data-feather="users"></span>
+					    Admin Approval
+						</a>
+				    </li> -->
+					<li class="nav-item">
+					<a class="nav-link" href="admin-analysis.php">
+				    	    <span data-feather="users"></span>
+					    User Analysis
+						</a>
+				    </li>
+					<a class="nav-link" href="user-report.php">
+				    	    <span data-feather="users"></span>
+					    User Reports
+						</a>
+				    </li>
+					<?php } ?>	
+
+				<?php if ($_SESSION['ROLE'] == 'Super Admin') { ?>
+					<li class="nav-item">
+					<a class="nav-link" href="">
+				    	    <span data-feather="users"></span>
+					    Admin Lists
+						</a>
+				    </li>
+						</a>
 				    </li>
 				<?php } ?>						
 			    </ul>
@@ -61,8 +89,15 @@ if (!isset($_SESSION['ID'])) {
 		    </nav>
 		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
-		    <h1 class="h2">Dashboard</h1>
+
 		</div>
+		<div class="card-header">
+                        <h4>LIST OF ADMINS
+						<?php if ($_SESSION['ROLE'] == "Super Admin") {?>
+                            <a href="admin-register.php" class="btn btn-primary float-right" >Add Admin</a>
+						<?php } ?>
+                        </h4>
+                    </div>
 		<div class="table-responsive">
 		  <table class="table table-striped">
 		    <thead>
@@ -80,9 +115,7 @@ if (!isset($_SESSION['ID'])) {
 			<?php
 		    	    if ($_SESSION['ROLE'] == "Super Admin") {
 				$query = "SELECT * FROM admin_account_user";
-			    }else{
-				$role = $_SESSION['ROLE'];
-				$query = "SELECT * FROM admin_account_user WHERE role = '$role'";
+			    
 			    }
 					$result = mysqli_query($con, $query);
 				if (mysqli_num_rows($result) > 0) {
@@ -96,9 +129,9 @@ if (!isset($_SESSION['ID'])) {
 				<td><?php echo $row['role']?></td>
 					<td><?php echo $row['status']?></td>
 					<td>
-						<a href="update.php?id=<?=$row['admin_userid'];?>" class="btn btn-success btn-sm">Edit</a>
-						<form action="delete.php" method="POST" class="d-inline">
-                        <button type="submit" name="delete" value="<?=$row['admin_userid'];?>" class="btn btn-danger btn-sm">Delete</button>
+						<a href="admin-update.php?id=<?=$row['admin_userid'];?>" class="btn btn-success btn-sm">Edit</a>
+						<form action="admin-disable.php" method="POST" class="d-inline">
+                        <button type="submit" name="delete" value="<?=$row['admin_userid'];?>" class="btn btn-danger btn-sm">Disable</button>
                         </form>
 					</td>
 			    </tr>

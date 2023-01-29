@@ -1,7 +1,7 @@
 <?php
   session_start();
   if (isset($_SESSION['ID'])) {
-      header("Location:dashboard.php");
+      header("Location:user-dashboard.php");
       exit();
   }
   // Include database connectivity
@@ -23,7 +23,7 @@
             $_SESSION['ID'] = $row['admin_userid'];
             $_SESSION['ROLE'] = $row['role'];
             $_SESSION['FNAME'] = $row['firstname'];
-            header("Location:dashboard.php");
+            header("Location:user-dashboard.php");
             die();                              
         }else{
           $errorMsg = "No user found on this ID Number!";
@@ -85,7 +85,6 @@
             <input type="password" class="form-control" name="password" placeholder="Enter Password">
           </div>
           <div class="form-group">
-            <p style="color:#fff;">Not registered yet ?<a href="register.php" style="color:red;"><b> Register here</a></p>
             <input type="submit" name="submit" class="btn btn-success" style="background-color: #3792cb" value="LOGIN"> 
           </div>
         </form>
